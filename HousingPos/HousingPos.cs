@@ -248,13 +248,6 @@ namespace HousingPos
 
             byte[] posArr = new byte[2416];
             Marshal.Copy(dataPtr, posArr, 0, 12);
-            if (BitConverter.ToString(posArr).Replace("-", " ").StartsWith("FF FF FF FF FF FF FF FF"))
-            {
-                HousingItemList.Clear();
-                Config.DrawScreen = false;
-                Config.Save();
-                return this.LoadHousingFuncHook.Original(a1, a2);
-            }
             if (Config.Previewing)
             {
                 RefreshFurnitureList(ref Config.HousingItemList);
